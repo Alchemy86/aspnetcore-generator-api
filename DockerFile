@@ -8,6 +8,9 @@ WORKDIR /generator
 COPY api/api.csproj ./api/
 RUN dotnet restore api/api.csproj
 
+# triggers better reporting for tests in teamcity
+ENV TEAMCITY_PROJECT_NAME=fake
+
 COPY tests/tests.csproj ./tests/
 RUN dotnet restore tests/tests.csproj
 
